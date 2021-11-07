@@ -6,7 +6,8 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -16,7 +17,9 @@ import {
   Text,
   useColorScheme,
   View,
+  TouchableOpacity,
 } from 'react-native';
+import {I18n} from '@i18n';
 
 import {
   Colors,
@@ -28,6 +31,7 @@ import {
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
+
   return (
     <View style={styles.sectionContainer}>
       <Text
@@ -54,6 +58,18 @@ const Section = ({children, title}): Node => {
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
+  // console.log(`I18n `, I18n);
+  const updateLangue = () => {
+    const newLocale = I18n.currentLocale() === 'fr' ? 'ar' : 'fr';
+    I18n.locale = newLocale;
+    setLocale(newLocale);
+  };
+
+  const [locale, setLocale] = useState('');
+
+  useEffect(() => {
+    console.log(`I18n.currentLocale();`, I18n.currentLocale());
+  }, [locale]);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -70,9 +86,13 @@ const App: () => Node = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
+          <TouchableOpacity onPress={() => updateLangue()}>
+            <Section title="Step Zero">{I18n.t('login.welcome')}</Section>
+          </TouchableOpacity>
+
           <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
+            Edit <Text style={styles.highlight}>{I18n.currentLocale()}</Text> to
+            change this screen and then come back to see your :
           </Section>
           <Section title="See Your Changes">
             <ReloadInstructions />

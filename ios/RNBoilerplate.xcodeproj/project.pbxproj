@@ -114,7 +114,6 @@
 				95D2D84694FD402C656B2BA6 /* Pods-RNBoilerplate-RNBoilerplateTests.debug.xcconfig */,
 				4FEE46D7598540D4CFBCA608 /* Pods-RNBoilerplate-RNBoilerplateTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
