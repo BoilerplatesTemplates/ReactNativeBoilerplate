@@ -5,6 +5,7 @@ import {NavigationService} from '@navigations';
 import {Context as ProfileContext} from '@hooks';
 import {I18n} from '@i18n';
 import styles from './styles';
+import {AlertNotifier} from '@helpers';
 
 const Dashboard = () => {
   const [locale, setLocale] = useState('');
@@ -17,7 +18,13 @@ const Dashboard = () => {
     setLocale(newLocale);
   };
 
-  useEffect(() => {}, [locale]);
+  useEffect(() => {
+    setTimeout(
+      () =>
+        AlertNotifier('info', `${I18n.t('login.welcome')}`, 'Dashboard screen'),
+      200,
+    );
+  }, [locale]);
 
   const logOut = () => {
     setProfile({profile: null});
