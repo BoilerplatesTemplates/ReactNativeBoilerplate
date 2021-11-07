@@ -7,6 +7,7 @@
  */
 
 import React, {useEffect, useState} from 'react';
+import {Logos} from '@assets';
 
 import type {Node} from 'react';
 import {
@@ -89,6 +90,7 @@ const App: () => Node = () => {
           <TouchableOpacity onPress={() => updateLangue()}>
             <Section title="Step Zero">{I18n.t('login.welcome')}</Section>
           </TouchableOpacity>
+          <Logos.react_narive.default />
 
           <Section title="Step One">
             Edit <Text style={styles.highlight}>{I18n.currentLocale()}</Text> to
