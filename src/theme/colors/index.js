@@ -12,4 +12,5 @@ export default {
   primary_dark: '#108091',
   primary_buttons: '#007D8F',
   green: '#99CC03',
+  error: '#DD6D6D',
 };
